@@ -3,14 +3,14 @@ version: "3"
 services:
   unifi:
     container_name: unifi
-    image: jacobalberty/unifi:latest
+    image: tbowman01/unifi:latest
     volumes:
       - '/data/unifi/:/unifi'
     restart: unless-stopped
     networks:
       default:
         # static IP address for unifi controller
-        ipv4_address: 172.16.1.2
+        ipv4_address: 172.16.10.254
 
 networks:
   default:
@@ -18,4 +18,4 @@ networks:
     ipam:
      config:
        # your chosen docker network here
-       - subnet: 172.16.1.0/24
+       - subnet: 172.16.10.0/24
