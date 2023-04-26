@@ -14,7 +14,7 @@ if [ ! -d "$path2" ]; then
 	sudo chmod +rw $path2
 fi
 
-curl https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
+curl https://raw.githubusercontent.com/tbowman01/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
 sudo chown pi $path2/docker-compose.yaml
 sudo chmod +rw $path2/docker-compose.yaml
 cd $path2
