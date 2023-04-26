@@ -11,7 +11,7 @@ To install:
 2. Copy the line below and paste into the Firewalla shell and then hit enter.
 
 ```
-curl -s -L -C- https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi_docker_install.sh | cat <(cat <(bash))
+curl -s -L -C- https://raw.githubusercontent.com/tbowman01/unifi-installer-for-Firewalla/main/unifi_docker_install.sh | cat <(cat <(bash))
 ```
 
 **Standard disclaimer:** I can not be responsible for any issues that may result. Nothing in the script should in any way, affect firewalla as a router or comprimise security. Happy to answer questions though if I can. :)
@@ -26,7 +26,7 @@ If you want more of a piecemeal approach, see below.
 1. ssh to your firewalla. User is always `pi` and the password comes from the Firewalla app. 
 1. Save the uninstall script on your firewalla:
    - `cd /data`
-   - `curl https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh > /data/unifi-uninstall.sh`
+   - `curl https://raw.githubusercontent.com/tbowman01/unifi-installer-for-Firewalla/main/unifi-uninstall.sh > /data/unifi-uninstall.sh`
 4. Make it executable:
    - `chmod +x /data/unifi-uninstall.sh`
 6. Run the script:
