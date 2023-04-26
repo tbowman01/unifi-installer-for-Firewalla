@@ -33,10 +33,10 @@ echo "Done"
 
 echo "configuring networks..."
 sleep 10
-sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table lan_routable
+sudo ip route add 172.16.10.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table lan_routable
 sleep 10
-sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table wan_routable
-echo address=/unifi/172.16.1.2 > ~/.firewalla/config/dnsmasq_local/unifi
+sudo ip route add 172.16.10.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table wan_routable
+echo address=/unifi/172.16.10.254 > ~/.firewalla/config/dnsmasq_local/unifi
 sleep 10
 sudo systemctl restart firerouter_dns
 sleep 5
@@ -54,9 +54,9 @@ echo "#!/bin/bash
 sudo systemctl start docker
 sudo systemctl start docker-compose@unifi
 sudo ipset create -! docker_lan_routable_net_set hash:net
-sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
+sudo ipset add -! docker_lan_routable_net_set 172.16.10.0/24
 sudo ipset create -! docker_wan_routable_net_set hash:net
-sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24" >  /home/pi/.firewalla/config/post_main.d/start_unifi.sh
+sudo ipset add -! docker_wan_routable_net_set 172.16.10.0/24" >  /home/pi/.firewalla/config/post_main.d/start_unifi.sh
 
 chmod a+x /home/pi/.firewalla/config/post_main.d/start_unifi.sh
 chown pi /home/pi/.firewalla/config/post_main.d/start_unifi.sh
@@ -71,4 +71,4 @@ done
 echo -e "\nStarting the container, please wait....\n"
 sleep 60
 
-echo -e "Done!\n\nYou can open https://172.16.1.2:8443 in your favorite browser and set up your UniFi Controller now. (\n\nNote it may not have a certificate so the browser may give you a security warning.)\n\n"
+echo -e "Done!\n\nYou can open https://172.16.10.254:8443 in your favorite browser and set up your UniFi Controller now. (\n\nNote it may not have a certificate so the browser may give you a security warning.)\n\n"
